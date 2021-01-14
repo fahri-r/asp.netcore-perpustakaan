@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\unknown\\Documents\\asp.netcore-perpustakaan\\asp.netcore-perpustakaan.csproj": {}
+    "C:\\Users\\unknown\\Documents\\__TB Algo\\asp.netcore-perpustakaan\\asp.netcore-perpustakaan.csproj": {}
   },
   "projects": {
-    "C:\\Users\\unknown\\Documents\\asp.netcore-perpustakaan\\asp.netcore-perpustakaan.csproj": {
+    "C:\\Users\\unknown\\Documents\\__TB Algo\\asp.netcore-perpustakaan\\asp.netcore-perpustakaan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\unknown\\Documents\\asp.netcore-perpustakaan\\asp.netcore-perpustakaan.csproj",
+        "projectUniqueName": "C:\\Users\\unknown\\Documents\\__TB Algo\\asp.netcore-perpustakaan\\asp.netcore-perpustakaan.csproj",
         "projectName": "asp.netcore-perpustakaan",
-        "projectPath": "C:\\Users\\unknown\\Documents\\asp.netcore-perpustakaan\\asp.netcore-perpustakaan.csproj",
+        "projectPath": "C:\\Users\\unknown\\Documents\\__TB Algo\\asp.netcore-perpustakaan\\asp.netcore-perpustakaan.csproj",
         "packagesPath": "C:\\Users\\unknown\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\unknown\\Documents\\asp.netcore-perpustakaan\\obj\\",
+        "outputPath": "C:\\Users\\unknown\\Documents\\__TB Algo\\asp.netcore-perpustakaan\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\unknown\\AppData\\Roaming\\NuGet\\NuGet.Config"

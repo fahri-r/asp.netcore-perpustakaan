@@ -20,7 +20,7 @@ namespace asp.netcore_perpustakaan.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return Redirect("/login");
         }
 
         public IActionResult Privacy()
