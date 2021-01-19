@@ -7,7 +7,6 @@ namespace Perpustakaan.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public virtual DbSet<Student> Students {get; set;}
         public virtual DbSet<Buku> Buku {get; set;}
         public virtual DbSet<Mahasiswa> Mahasiswa {get; set;}
         public virtual DbSet<Pegawai> Pegawai {get; set;}
