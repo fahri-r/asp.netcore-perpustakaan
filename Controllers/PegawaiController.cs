@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
 
-namespace asp.netcore_perpustakaan.Controllers
+namespace Perpustakaan.Controllers
 {
     public class PegawaiController : Controller
     {

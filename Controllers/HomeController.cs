@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using asp.netcore_perpustakaan.Models;
+using Perpustakaan.Models;
 
-namespace asp.netcore_perpustakaan.Controllers
+namespace Perpustakaan.Controllers
 {
     public class HomeController : Controller
     {

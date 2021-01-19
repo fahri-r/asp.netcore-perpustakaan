@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace asp.netcore_perpustakaan
+namespace Perpustakaan
 {
     public class Program
     {

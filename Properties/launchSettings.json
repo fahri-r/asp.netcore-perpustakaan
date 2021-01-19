@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "asp.netcore_perpustakaan": {
+    "Perpustakaan": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
