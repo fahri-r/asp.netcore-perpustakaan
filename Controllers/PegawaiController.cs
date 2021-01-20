@@ -1,18 +1,20 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Encodings.Web;
+using Microsoft.EntityFrameworkCore;
+using Perpustakaan.Data;
 
 namespace Perpustakaan.Controllers
 {
     public class PegawaiController : Controller
     {
-        public string Index()
+        private readonly ApplicationDbContext _context;
+        public PegawaiController(ApplicationDbContext context)
         {
-            return "This is my default action...";
+            _context = context;
         }
-
-        public string Welcome()
+        public async Task<IActionResult> Index()
         {
-            return "This is the Welcome action method...";
+            return View(await _context.Pegawai.ToListAsync());
         }
     }
 }

@@ -1,6 +1,6 @@
-@model IEnumerable<Perpustakaan.Models.Buku>
+@model IEnumerable<Perpustakaan.Models.Pegawai>
   @{
-  ViewData["Title"] = "Buku";
+  ViewData["Title"] = "Pegawai";
   }
 
   @section header_scripts{
@@ -11,12 +11,12 @@
   @section breadcrumb{
   <div class="row mb-2">
     <div class="col-sm-6">
-      <h1 class="m-0 text-dark">Data Buku</h1>
+      <h1 class="m-0 text-dark">Data Pegawai</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
       <ol class="breadcrumb float-sm-right">
         <li class="breadcrumb-item"><a href="/peminjaman">Home</a></li>
-        <li class="breadcrumb-item active">Buku</li>
+        <li class="breadcrumb-item active">Pegawai</li>
       </ol>
     </div><!-- /.col -->
   </div><!-- /.row -->
@@ -33,11 +33,10 @@
           <table id="example2" class="table table-bordered table-hover">
             <thead>
               <tr>
-                <th>@Html.DisplayNameFor(model => model.KodeBuku)</th>
-                <th>@Html.DisplayNameFor(model => model.JudulBuku)</th>
-                <th>@Html.DisplayNameFor(model => model.Penerbit)</th>
-                <th>@Html.DisplayNameFor(model => model.Pengarang)</th>
-                <th>@Html.DisplayNameFor(model => model.ThnTerbit)</th>
+                <th>@Html.DisplayNameFor(model => model.Nip)</th>
+                <th>@Html.DisplayNameFor(model => model.NamaPegawai)</th>
+                <th>@Html.DisplayNameFor(model => model.Alamat)</th>
+                <th>@Html.DisplayNameFor(model => model.NoHP)</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -46,32 +45,29 @@
               {
               <tr>
                 <td>
-                  @Html.DisplayFor(modelItem => item.KodeBuku)
+                  @Html.DisplayFor(modelItem => item.Nip)
                 </td>
                 <td>
-                  @Html.DisplayFor(modelItem => item.JudulBuku)
+                  @Html.DisplayFor(modelItem => item.NamaPegawai)
                 </td>
                 <td>
-                  @Html.DisplayFor(modelItem => item.Penerbit)
+                  @Html.DisplayFor(modelItem => item.Alamat)
                 </td>
                 <td>
-                  @Html.DisplayFor(modelItem => item.Pengarang)
-                </td>
-                <td>
-                  @Html.DisplayFor(modelItem => item.ThnTerbit)
+                  @Html.DisplayFor(modelItem => item.NoHP)
                 </td>
                 <td class="text-center">
-                  <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-id="@item.KodeBuku">
+                  <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-id="@item.Nip">
                     <i class="fas fa-folder">
                     </i>
                     View
                   </a>
-                  <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@item.KodeBuku">
+                  <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@item.Nip">
                     <i class="fas fa-pencil-alt">
                     </i>
                     Edit
                   </a>
-                  <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.KodeBuku">
+                  <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Nip">
                     <i class="fas fa-trash">
                     </i>
                     Delete
@@ -82,11 +78,10 @@
             </tbody>
             <tfoot>
               <tr>
-                <th>@Html.DisplayNameFor(model => model.KodeBuku)</th>
-                <th>@Html.DisplayNameFor(model => model.JudulBuku)</th>
-                <th>@Html.DisplayNameFor(model => model.Penerbit)</th>
-                <th>@Html.DisplayNameFor(model => model.Pengarang)</th>
-                <th>@Html.DisplayNameFor(model => model.ThnTerbit)</th>
+                <th>@Html.DisplayNameFor(model => model.Nip)</th>
+                <th>@Html.DisplayNameFor(model => model.NamaPegawai)</th>
+                <th>@Html.DisplayNameFor(model => model.Alamat)</th>
+                <th>@Html.DisplayNameFor(model => model.NoHP)</th>
                 <th>Aksi</th>
               </tr>
             </tfoot>

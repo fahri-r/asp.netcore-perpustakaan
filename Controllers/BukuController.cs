@@ -1,18 +1,20 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Encodings.Web;
+using Microsoft.EntityFrameworkCore;
+using Perpustakaan.Data;
 
 namespace Perpustakaan.Controllers
 {
     public class BukuController : Controller
     {
-        public IActionResult Index()
+        private readonly ApplicationDbContext _context;
+        public BukuController(ApplicationDbContext context)
         {
-            return View();
+            _context = context;
         }
-
-        public string Welcome()
+        public async Task<IActionResult> Index()
         {
-            return "This is the Welcome action method...";
+            return View(await _context.Buku.ToListAsync());
         }
     }
 }

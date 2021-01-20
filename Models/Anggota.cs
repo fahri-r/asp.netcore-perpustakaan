@@ -4,18 +4,18 @@
 
 namespace Perpustakaan.Models
 {
-    public class Pegawai
+    public class Anggota
     {
-        public Pegawai()
+        public Anggota()
         {
         }
 
-        [Display(Name = "NIP")]
-        public string Nip { get; set; }
+        [Display(Name = "No. KTP")]
+        public string NoKTP { get; set; }
 
         [Display(Name = "Nama Lengkap")]
-        public string NamaPegawai { get; set; }
-        
+        public string NamaLengkap { get; set; }
+
         [Display(Name = "Alamat")]
         public string Alamat { get; set; }
 

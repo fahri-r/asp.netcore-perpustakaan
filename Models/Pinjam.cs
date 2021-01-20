@@ -14,6 +14,6 @@ namespace Perpustakaan.Models
 
         public virtual Buku KodeBuku { get; set; }
         public virtual Pegawai Nip { get; set; }
-        public virtual Mahasiswa Npm { get; set; }
+        public virtual Anggota NoKTP { get; set; }
     }
 }
