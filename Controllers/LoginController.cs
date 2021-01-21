@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Encodings.Web;
+using System.Linq;
+using Perpustakaan.Data;
 
 namespace Perpustakaan.Controllers
 {
@@ -8,6 +9,21 @@ namespace Perpustakaan.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        
+        [HttpPost]
+        public IActionResult Authorize(Perpustakaan.Models.Users userModel)
+        {
+            using(ApplicationDbContext db = new ApplicationDbContext()){
+                var userDetails = db.Users.Where(x => x.Email == userModel.Email && x.Password == userModel.Password).FirstOrDefault();
+                if(userDetails == null)
+                {
+                    return View("Index");
+                }
+                else{
+                    return Redirect("/peminjaman");
+                }
+            }
         }
     }
 }

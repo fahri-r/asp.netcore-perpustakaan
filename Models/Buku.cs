@@ -1,28 +1,25 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-#nullable disable
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
 
 namespace Perpustakaan.Models
 {
-    public class Buku
+    public partial class Buku
     {
         public Buku()
         {
+            Pinjam = new HashSet<Pinjam>();
         }
-        
-        [Display(Name = "Kode Buku")]
+
         public string KodeBuku { get; set; }
-
-        [Display(Name = "Judul Buku")]
         public string JudulBuku { get; set; }
-
-        [Display(Name = "Penerbit")]
         public string Penerbit { get; set; }
-
-        [Display(Name = "Pengarang")]
         public string Pengarang { get; set; }
-
-        [Display(Name = "Tahun Terbit")]
         public short ThnTerbit { get; set; }
+
+        public virtual ICollection<Pinjam> Pinjam { get; set; }
     }
 }

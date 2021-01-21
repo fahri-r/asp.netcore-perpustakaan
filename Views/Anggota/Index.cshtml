@@ -33,10 +33,10 @@
           <table id="example2" class="table table-bordered table-hover">
             <thead>
               <tr>
-                <th>@Html.DisplayNameFor(model => model.NoKTP)</th>
+                <th>@Html.DisplayNameFor(model => model.NoKtp)</th>
                 <th>@Html.DisplayNameFor(model => model.NamaLengkap)</th>
                 <th>@Html.DisplayNameFor(model => model.Alamat)</th>
-                <th>@Html.DisplayNameFor(model => model.NoHP)</th>
+                <th>@Html.DisplayNameFor(model => model.NoHp)</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -45,7 +45,7 @@
               {
               <tr>
                 <td>
-                  @Html.DisplayFor(modelItem => item.NoKTP)
+                  @Html.DisplayFor(modelItem => item.NoKtp)
                 </td>
                 <td>
                   @Html.DisplayFor(modelItem => item.NamaLengkap)
@@ -54,20 +54,20 @@
                   @Html.DisplayFor(modelItem => item.Alamat)
                 </td>
                 <td>
-                  @Html.DisplayFor(modelItem => item.NoHP)
+                  @Html.DisplayFor(modelItem => item.NoHp)
                 </td>
                 <td class="text-center">
-                  <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-id="@item.NoKTP">
+                  <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-id="@item.NoKtp">
                     <i class="fas fa-folder">
                     </i>
                     View
                   </a>
-                  <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@item.NoKTP">
+                  <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@item.NoKtp">
                     <i class="fas fa-pencil-alt">
                     </i>
                     Edit
                   </a>
-                  <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.NoKTP">
+                  <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.NoKtp">
                     <i class="fas fa-trash">
                     </i>
                     Delete
@@ -78,10 +78,10 @@
             </tbody>
             <tfoot>
               <tr>
-                <th>@Html.DisplayNameFor(model => model.NoKTP)</th>
+                <th>@Html.DisplayNameFor(model => model.NoKtp)</th>
                 <th>@Html.DisplayNameFor(model => model.NamaLengkap)</th>
                 <th>@Html.DisplayNameFor(model => model.Alamat)</th>
-                <th>@Html.DisplayNameFor(model => model.NoHP)</th>
+                <th>@Html.DisplayNameFor(model => model.NoHp)</th>
                 <th>Aksi</th>
               </tr>
             </tfoot>

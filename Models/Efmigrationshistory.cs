@@ -7,16 +7,9 @@ using System.Collections.Generic;
 
 namespace Perpustakaan.Models
 {
-    public partial class Usertype
+    public partial class Efmigrationshistory
     {
-        public Usertype()
-        {
-            Users = new HashSet<Users>();
-        }
-
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-        public virtual ICollection<Users> Users { get; set; }
+        public string MigrationId { get; set; }
+        public string ProductVersion { get; set; }
     }
 }
