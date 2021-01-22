@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Perpustakaan.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace Perpustakaan.Controllers
 {
@@ -21,9 +22,16 @@ namespace Perpustakaan.Controllers
                     return View("Index");
                 }
                 else{
-                    return Redirect("/peminjaman");
+                    HttpContext.Session.SetString("UserId", userDetails.Email);
+                    return RedirectToAction("Index", "Peminjaman");
                 }
             }
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("UserId");
+            return RedirectToAction("Index", "Login");
         }
     }
 }

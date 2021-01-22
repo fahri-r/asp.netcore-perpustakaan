@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Http;
 
 namespace Perpustakaan.Controllers
 {
@@ -7,6 +8,9 @@ namespace Perpustakaan.Controllers
     {
         public IActionResult Index()
         {
+            if(HttpContext.Session.GetString("UserId") == null){
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
     }

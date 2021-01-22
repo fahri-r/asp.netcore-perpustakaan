@@ -20,7 +20,7 @@ namespace Perpustakaan.Controllers
 
         public IActionResult Index()
         {
-            return Redirect("/login");
+            return RedirectToAction("Index", "Login");
         }
 
         public IActionResult Privacy()
