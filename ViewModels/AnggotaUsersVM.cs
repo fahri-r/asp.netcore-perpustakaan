@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Perpustakaan.ViewModels
 {
-    public  class AnggotaUsersVM
+    public class AnggotaUsersVM
     {
         [MinLength(16)]
         public string NoKtp { get; set; }
