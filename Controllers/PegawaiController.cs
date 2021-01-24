@@ -24,6 +24,9 @@ namespace Perpustakaan.Controllers
         }
         public IActionResult Create()
         {
+            if(HttpContext.Session.GetString("UserId") == null){
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
         
@@ -51,7 +54,39 @@ namespace Perpustakaan.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Pegawai");
             }   
-            return View("Index");
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Delete(string? id)
+        {
+            if(HttpContext.Session.GetString("UserId") == null){
+                return RedirectToAction("Index", "Login");
+            }
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var pegawai = await _context.Pegawai
+                .FirstOrDefaultAsync(m => m.Nip == id);
+            
+            if (pegawai == null)
+            {
+                return NotFound();
+            }
+
+            return View(pegawai);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            var pegawai = await _context.Pegawai.FindAsync(id);
+            _context.Pegawai.Remove(pegawai);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Pegawai");
         }
     }
 }
