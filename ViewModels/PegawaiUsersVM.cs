@@ -2,9 +2,9 @@ using Perpustakaan.Models;
 
 namespace Perpustakaan.ViewModels
 {
-    public class AnggotaUsersVM
+    public class PegawaiUsersVM
     {
-        public Anggota anggotaVm { get; set; }
+        public Pegawai pegawaiVm { get; set; }
         public Users usersVm { get; set; }
     }
 }

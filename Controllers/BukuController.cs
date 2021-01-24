@@ -20,5 +20,10 @@ namespace Perpustakaan.Controllers
             }
             return View(await _context.Buku.ToListAsync());
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }

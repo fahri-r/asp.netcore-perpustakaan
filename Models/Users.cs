@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Perpustakaan.Models
 {
@@ -20,7 +16,12 @@ namespace Perpustakaan.Models
         [Required]
         public string Email { get; set; }
         [Required]
+        [MinLength(8)]
         public string Password { get; set; }
+        [NotMapped]
+        [Display(Name = "Konfirmasi Password")]
+        [Compare("Password")]
+        public string ConfirmPassword { get; set; }
         public int? IdTypeId { get; set; }
 
         public virtual Usertype IdType { get; set; }
