@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Perpustakaan.Data;
 using Perpustakaan.Models;
+using System.Linq;
 
 namespace Perpustakaan.Controllers
 {
@@ -79,6 +80,57 @@ namespace Perpustakaan.Controllers
             _context.Buku.Remove(buku);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Buku");
+        }
+
+        public async Task<IActionResult> Edit(string? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var buku = await _context.Buku.FindAsync(id);
+            if (buku == null)
+            {
+                return NotFound();
+            }
+            return View(buku);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, Buku buku)
+        {
+            if (id != buku.KodeBuku)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(buku);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!BukuExists(buku.KodeBuku))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(buku);
+        }
+        private bool BukuExists(string id)
+        {
+            return _context.Buku.Any(e => e.KodeBuku == id);
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Perpustakaan.Controllers
                 _context.Anggota.Add(a);
                 _context.SaveChanges();
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Anggota");
+                return RedirectToAction(nameof(Index));
             }   
             return RedirectToAction("Index");
         }
@@ -89,6 +89,57 @@ namespace Perpustakaan.Controllers
             _context.Users.Remove(users);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Anggota");
+        }
+
+        public async Task<IActionResult> Edit(string? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var anggota = await _context.Anggota.FindAsync(id);
+            if (anggota == null)
+            {
+                return NotFound();
+            }
+            return View(anggota);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, Anggota anggota)
+        {
+            if (id != anggota.NoKtp)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(anggota);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!AnggotaExists(anggota.NoKtp))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(anggota);
+        }
+        private bool AnggotaExists(string id)
+        {
+            return _context.Anggota.Any(e => e.NoKtp == id);
         }
     }
 }

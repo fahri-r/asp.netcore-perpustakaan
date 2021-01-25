@@ -53,7 +53,7 @@ namespace Perpustakaan.Controllers
                 _context.Pegawai.Add(p);
                 _context.SaveChanges();
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Pegawai");
+                return RedirectToAction(nameof(Index));
             }   
             return RedirectToAction("Index");
         }
@@ -89,6 +89,57 @@ namespace Perpustakaan.Controllers
             _context.Users.Remove(users);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Pegawai");
+        }
+
+        public async Task<IActionResult> Edit(string? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var pegawai = await _context.Pegawai.FindAsync(id);
+            if (pegawai == null)
+            {
+                return NotFound();
+            }
+            return View(pegawai);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, Pegawai pegawai)
+        {
+            if (id != pegawai.Nip)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(pegawai);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PegawaiExists(pegawai.Nip))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(pegawai);
+        }
+        private bool PegawaiExists(string id)
+        {
+            return _context.Pegawai.Any(e => e.Nip == id);
         }
     }
 }
