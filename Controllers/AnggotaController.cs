@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Perpustakaan.Data;
 using Perpustakaan.ViewModels;
 using Perpustakaan.Models;
+using System.Linq;
 
 namespace Perpustakaan.Controllers
 {
@@ -83,8 +84,9 @@ namespace Perpustakaan.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var anggota = await _context.Anggota.FindAsync(id);
-            _context.Anggota.Remove(anggota);
+            var idUsers= _context.Anggota.Where(u => u.NoKtp == id).Select(u => u.IdUserId).FirstOrDefault();
+            var users = await _context.Users.FindAsync(idUsers);
+            _context.Users.Remove(users);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Anggota");
         }

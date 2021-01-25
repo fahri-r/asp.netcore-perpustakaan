@@ -5,6 +5,7 @@ using Perpustakaan.Data;
 using Microsoft.AspNetCore.Http;
 using Perpustakaan.ViewModels;
 using Perpustakaan.Models;
+using System.Linq;
 
 namespace Perpustakaan.Controllers
 {
@@ -83,8 +84,9 @@ namespace Perpustakaan.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var pegawai = await _context.Pegawai.FindAsync(id);
-            _context.Pegawai.Remove(pegawai);
+            var idUsers= _context.Pegawai.Where(u => u.Nip == id).Select(u => u.IdUserId).FirstOrDefault();
+            var users = await _context.Users.FindAsync(idUsers);
+            _context.Users.Remove(users);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Pegawai");
         }

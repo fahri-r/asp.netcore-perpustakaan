@@ -22,7 +22,6 @@ namespace Perpustakaan.Data
 
         public virtual DbSet<Anggota> Anggota { get; set; }
         public virtual DbSet<Buku> Buku { get; set; }
-        public virtual DbSet<Efmigrationshistory> Efmigrationshistory { get; set; }
         public virtual DbSet<Pegawai> Pegawai { get; set; }
         public virtual DbSet<Pinjam> Pinjam { get; set; }
         public virtual DbSet<Users> Users { get; set; }
@@ -75,7 +74,8 @@ namespace Perpustakaan.Data
                 entity.HasOne(d => d.IdUser)
                     .WithMany(p => p.Anggota)
                     .HasForeignKey(d => d.IdUserId)
-                    .HasConstraintName("FK_Anggota_Users_IdUserId");
+                    .HasConstraintName("FK_Anggota_Users_IdUserId")
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Buku>(entity =>
@@ -106,25 +106,6 @@ namespace Perpustakaan.Data
                     .HasCollation("utf8mb4_general_ci");
 
                 entity.Property(e => e.ThnTerbit).HasColumnType("smallint(6)");
-            });
-
-            modelBuilder.Entity<Efmigrationshistory>(entity =>
-            {
-                entity.HasKey(e => e.MigrationId)
-                    .HasName("PRIMARY");
-
-                entity.ToTable("__efmigrationshistory");
-
-                entity.Property(e => e.MigrationId)
-                    .HasColumnType("varchar(95)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_general_ci");
-
-                entity.Property(e => e.ProductVersion)
-                    .IsRequired()
-                    .HasColumnType("varchar(32)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_general_ci");
             });
 
             modelBuilder.Entity<Pegawai>(entity =>
@@ -163,7 +144,8 @@ namespace Perpustakaan.Data
                 entity.HasOne(d => d.IdUser)
                     .WithMany(p => p.Pegawai)
                     .HasForeignKey(d => d.IdUserId)
-                    .HasConstraintName("FK_Pegawai_Users_IdUserId");
+                    .HasConstraintName("FK_Pegawai_Users_IdUserId")
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Pinjam>(entity =>

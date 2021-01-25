@@ -3,14 +3,11 @@ using Perpustakaan.ViewModels;
 using Perpustakaan.Models;
 using Perpustakaan.Data;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace Perpustakaan.Controllers
 {
     public class RegisterController : Controller
     {
-        List<Users> users = new List<Users>();
-        List<Anggota> anggota = new List<Anggota>();
         private readonly ApplicationDbContext _context;
 
         public RegisterController(ApplicationDbContext context)
