@@ -67,12 +67,7 @@
                   @Html.DisplayFor(modelItem => item.ThnTerbit)
                 </td>
                 <td class="text-center">
-                  <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-id="@item.KodeBuku">
-                    <i class="fas fa-folder">
-                    </i>
-                    View
-                  </a>
-                  <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@item.KodeBuku">
+                  <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.KodeBuku">
                     <i class="fas fa-pencil-alt">
                     </i>
                     Edit

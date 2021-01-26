@@ -1,0 +1,142 @@
+@model Perpustakaan.Models.Pinjam;
+@{
+ViewData["Title"] = "Tambah Peminjaman";
+}
+
+      @section header_scripts{
+      <!-- Select2 -->
+      <link rel="stylesheet" href="~/plugins/select2/css/select2.min.css">
+      <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+      <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+      }
+
+      @section breadcrumb{
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Tambah Data Peminjaman</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Peminjaman">Home</a></li>
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Peminjaman">Peminjaman</a></li>
+            <li class="breadcrumb-item active">Tambah Peminjaman</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+      }
+
+      <div class="row justify-content-center">
+        <!-- left column -->
+        <div class="col-md-8">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Formulir Tambah Data Peminjaman</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form asp-action="Create" asp-controller="Peminjaman" method="POST">
+              <div class="card-body">
+                <div class="form-group">
+                  <label>Tanggal Pinjam</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                    <input asp-for="TglPinjam" type="text" class="form-control" data-inputmask-alias="datetime"
+                      data-inputmask-inputformat="dd/mm/yyyy" value ="" data-mask>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Tanggal Kembali</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                    <input asp-for="TglKembali" type="text" class="form-control" data-inputmask-alias="datetime"
+                      data-inputmask-inputformat="dd/mm/yyyy" value ="" data-mask>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>No. KTP Anggota</label>
+                  @Html.DropDownListFor(model => model.NoKtp1, new SelectList(Model.anggotaCollection, "NoKtp",
+                  "NamaLengkap"),"Select", new {@onchange ="changeKTP();", @class = "form-control select2", @id="fieldKTP"})
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="NoKTP" disabled>
+                </div>
+                <div class="form-group">
+                  <label>Kode Buku</label>
+                  @Html.DropDownListFor(model => model.KodeBuku1, new SelectList(Model.bukuCollection, "KodeBuku",
+                  "JudulBuku"),"Select", new {@onchange ="changeKodeBuku();", @class = "form-control select2",
+                  @id="fieldKodeBuku"})
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="KodeBuku" disabled>
+                </div>
+                <div class="form-group">
+                  <label>NIP</label>
+                  @Html.DropDownListFor(model => model.Nip1, new SelectList(Model.pegawaiCollection, "Nip",
+                  "NamaPegawai"),"Select", new {@onchange ="changeNIP();", @class = "form-control select2", @id="fieldNIP"})
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="NIP" disabled>
+                </div>
+              </div>
+              <!-- /.card-body -->
+
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Tambah</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!--/.col (left) -->
+      </div>
+      <!-- /.row -->
+      </div>
+
+      @section footer_scripts{
+      <script src="~/plugins/select2/js/select2.full.min.js"></script>
+      <!-- InputMask -->
+      <script src="../../plugins/moment/moment.min.js"></script>
+      <script src="../../plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+      <script>
+        $(function () {
+          //Initialize Select2 Elements
+          $('.select2').select2()
+
+          //Initialize Select2 Elements
+          $('.select2bs4').select2({
+            theme: 'bootstrap4'
+          })
+
+          //Datemask dd/mm/yyyy
+          $('#datemask').inputmask('dd/mm/yyyy', {
+            'placeholder': 'dd/mm/yyyy'
+          })
+          //Datemask2 mm/dd/yyyy
+          $('#datemask2').inputmask('mm/dd/yyyy', {
+            'placeholder': 'mm/dd/yyyy'
+          })
+          //Money Euro
+          $('[data-mask]').inputmask()
+        })
+      </script>
+      <script>
+        function changeKTP() {
+          document.getElementById("NoKTP").value = document.getElementById("fieldKTP").value;
+        }
+
+        function changeKodeBuku() {
+          document.getElementById("KodeBuku").value = document.getElementById("fieldKodeBuku").value;
+        }
+
+        function changeNIP() {
+          document.getElementById("NIP").value = document.getElementById("fieldNIP").value;
+        }
+      </script>
+
+      }

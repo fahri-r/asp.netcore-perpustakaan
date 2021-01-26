@@ -70,8 +70,12 @@
                 <td>
                   @item.pinjamVm.TglKembali
                 </td>
-                <td>
-                  Aksi
+                <td class="text-center">
+                  <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.pinjamVm.Id">
+                    <i class="fas fa-trash">
+                    </i>
+                    Delete
+                  </a>
                 </td>
               </tr>
               }
