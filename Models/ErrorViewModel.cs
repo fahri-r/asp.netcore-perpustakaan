@@ -1,6 +1,6 @@
 using System;
 
-namespace asp.netcore_perpustakaan.Models
+namespace Perpustakaan.Models
 {
     public class ErrorViewModel
     {

@@ -1,0 +1,125 @@
+@model IEnumerable<Perpustakaan.Models.Buku>
+  @{
+  ViewData["Title"] = "Buku";
+  }
+
+  @section header_scripts{
+  <link rel="stylesheet" href="~/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="~/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  }
+
+  @section breadcrumb{
+  <div class="row mb-2">
+    <div class="col-sm-6">
+      <h1 class="m-0 text-dark">Data Buku</h1>
+    </div><!-- /.col -->
+    <div class="col-sm-6">
+      <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a href="/peminjaman">Home</a></li>
+        <li class="breadcrumb-item active">Buku</li>
+      </ol>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+  }
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="col-2">
+            <a class="btn btn-primary btn-block" asp-action="Create" asp-controller="Buku">
+              <i class="fas fa-plus">
+              </i>
+              Tambah Data
+            </a>
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="example2" class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>@Html.DisplayNameFor(model => model.KodeBuku)</th>
+                <th>@Html.DisplayNameFor(model => model.JudulBuku)</th>
+                <th>@Html.DisplayNameFor(model => model.Penerbit)</th>
+                <th>@Html.DisplayNameFor(model => model.Pengarang)</th>
+                <th>@Html.DisplayNameFor(model => model.ThnTerbit)</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach (var item in Model)
+              {
+              <tr>
+                <td>
+                  @Html.DisplayFor(modelItem => item.KodeBuku)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.JudulBuku)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.Penerbit)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.Pengarang)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.ThnTerbit)
+                </td>
+                <td class="text-center">
+                  <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.KodeBuku">
+                    <i class="fas fa-pencil-alt">
+                    </i>
+                    Edit
+                  </a>
+                  <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.KodeBuku">
+                    <i class="fas fa-trash">
+                    </i>
+                    Delete
+                  </a>
+                </td>
+              </tr>
+              }
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>@Html.DisplayNameFor(model => model.KodeBuku)</th>
+                <th>@Html.DisplayNameFor(model => model.JudulBuku)</th>
+                <th>@Html.DisplayNameFor(model => model.Penerbit)</th>
+                <th>@Html.DisplayNameFor(model => model.Pengarang)</th>
+                <th>@Html.DisplayNameFor(model => model.ThnTerbit)</th>
+                <th>Aksi</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+  </div>
+
+  @section footer_scripts{
+  <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="~/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="~/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="~/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+      });
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
+  }

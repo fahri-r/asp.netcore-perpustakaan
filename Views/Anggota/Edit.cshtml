@@ -1,0 +1,61 @@
+  @model Perpustakaan.Models.Anggota;
+
+  @{
+  ViewData["Title"] = "Edit Anggota";
+  }
+
+  @section breadcrumb{
+  <div class="row mb-2">
+      <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Edit Data Anggota</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Peminjaman">Home</a></li>
+              <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Anggota">Anggota</a></li>
+              <li class="breadcrumb-item active">Edit Anggota</li>
+          </ol>
+      </div><!-- /.col -->
+  </div><!-- /.row -->
+  }
+
+  <div class="row justify-content-center">
+      <!-- left column -->
+      <div class="col-md-8">
+          <!-- general form elements -->
+          <div class="card card-warning">
+              <div class="card-header">
+                  <h3 class="card-title">Formulir Edit Data Anggota</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form asp-action="Edit" asp-controller="Anggota" method="POST">
+                  <div class="card-body">
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.NoKtp)
+                          <input asp-for="NoKtp" type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.NamaLengkap)
+                          <input asp-for="NamaLengkap" type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.Alamat)
+                          <textarea asp-for="Alamat" class="form-control" rows="3"></textarea>
+                      </div>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.NoHp)
+                          <input asp-for="NoHp" type="text" class="form-control">
+                      </div>
+                  </div>
+                  <!-- /.card-body -->
+                      <div class="card-footer">
+                      <button type="submit" class="btn btn-warning" value="Edit">Edit</button>
+                  </div>
+              </form>
+          </div>
+          <!-- /.card -->
+
+      </div>
+      <!--/.col (left) -->
+  </div>
