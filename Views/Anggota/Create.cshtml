@@ -31,30 +31,37 @@
               <!-- form start -->
               <form asp-action="Create" asp-controller="Anggota" method="POST">
                   <div class="card-body">
+                    <span asp-validation-for="anggotaVm.NoKtp" class="text-danger"></span>
                       <div class="form-group">
                           @Html.LabelFor(m => m.anggotaVm.NoKtp)
                           <input asp-for="anggotaVm.NoKtp" type="text" class="form-control">
                       </div>
+                    <span asp-validation-for="anggotaVm.NamaLengkap" class="text-danger"></span>
                       <div class="form-group">
                           @Html.LabelFor(m => m.anggotaVm.NamaLengkap)
                           <input asp-for="anggotaVm.NamaLengkap" type="text" class="form-control">
                       </div>
+                    <span asp-validation-for="anggotaVm.Alamat" class="text-danger"></span>
                       <div class="form-group">
                           @Html.LabelFor(m => m.anggotaVm.Alamat)
                           <textarea asp-for="anggotaVm.Alamat" class="form-control" rows="3"></textarea>
                       </div>
+                    <span asp-validation-for="anggotaVm.NoHp" class="text-danger"></span>
                       <div class="form-group">
                           @Html.LabelFor(m => m.anggotaVm.NoHp)
                           <input asp-for="anggotaVm.NoHp" type="text" class="form-control">
                       </div>
+                    <span asp-validation-for="usersVm.Email" class="text-danger"></span>
                       <div class="form-group">
                           @Html.LabelFor(m => m.usersVm.Email)
                           <input asp-for="usersVm.Email" type="text" class="form-control">
                       </div>
+                    <span asp-validation-for="usersVm.Password" class="text-danger"></span>
                       <div class="form-group">
                           @Html.LabelFor(m => m.usersVm.Password)
                           <input asp-for="usersVm.Password" type="password" class="form-control">
                       </div>
+                    <span asp-validation-for="usersVm.ConfirmPassword" class="text-danger"></span>
                       <div class="form-group">
                           @Html.LabelFor(m => m.usersVm.ConfirmPassword)
                           <input asp-for="usersVm.ConfirmPassword" type="password" class="form-control">

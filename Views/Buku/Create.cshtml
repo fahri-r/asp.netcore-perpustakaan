@@ -30,22 +30,27 @@
                 <!-- form start -->
                 <form asp-action="Create" asp-controller="Buku" method="POST">
                     <div class="card-body">
+                    <span asp-validation-for="KodeBuku" class="text-danger"></span>
                         <div class="form-group">
                             @Html.LabelFor(m => m.KodeBuku)
                             <input asp-for="KodeBuku" type="text" class="form-control">
                         </div>
+                    <span asp-validation-for="JudulBuku" class="text-danger"></span>
                         <div class="form-group">
                             @Html.LabelFor(m => m.JudulBuku)
                             <input asp-for="JudulBuku" type="text" class="form-control">
                         </div>
+                    <span asp-validation-for="Pengarang" class="text-danger"></span>
                         <div class="form-group">
                             @Html.LabelFor(m => m.Pengarang)
                             <input asp-for="Pengarang" type="text" class="form-control">
                         </div>
+                    <span asp-validation-for="Penerbit" class="text-danger"></span>
                         <div class="form-group">
                             @Html.LabelFor(m => m.Penerbit)
                             <input asp-for="Penerbit" type="text" class="form-control">
                         </div>
+                    <span asp-validation-for="ThnTerbit" class="text-danger"></span>
                         <div class="form-group">
                             @Html.LabelFor(m => m.ThnTerbit)
                             <input asp-for="ThnTerbit" type="text" class="form-control" data-inputmask-alias="datetime"

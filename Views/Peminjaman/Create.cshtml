@@ -37,6 +37,7 @@ ViewData["Title"] = "Tambah Peminjaman";
             <!-- form start -->
             <form asp-action="Create" asp-controller="Peminjaman" method="POST">
               <div class="card-body">
+                    <span asp-validation-for="TglPinjam" class="text-danger"></span>
                 <div class="form-group">
                   <label>Tanggal Pinjam</label>
                   <div class="input-group">
@@ -47,6 +48,7 @@ ViewData["Title"] = "Tambah Peminjaman";
                       data-inputmask-inputformat="dd/mm/yyyy" value ="" data-mask>
                   </div>
                 </div>
+                    <span asp-validation-for="TglKembali" class="text-danger"></span>
                 <div class="form-group">
                   <label>Tanggal Kembali</label>
                   <div class="input-group">
@@ -57,6 +59,7 @@ ViewData["Title"] = "Tambah Peminjaman";
                       data-inputmask-inputformat="dd/mm/yyyy" value ="" data-mask>
                   </div>
                 </div>
+                    <span asp-validation-for="NoKtp1" class="text-danger"></span>
                 <div class="form-group">
                   <label>No. KTP Anggota</label>
                   @Html.DropDownListFor(model => model.NoKtp1, new SelectList(Model.anggotaCollection, "NoKtp",
@@ -65,6 +68,7 @@ ViewData["Title"] = "Tambah Peminjaman";
                 <div class="form-group">
                   <input type="text" class="form-control" id="NoKTP" disabled>
                 </div>
+                    <span asp-validation-for="KodeBuku1" class="text-danger"></span>
                 <div class="form-group">
                   <label>Kode Buku</label>
                   @Html.DropDownListFor(model => model.KodeBuku1, new SelectList(Model.bukuCollection, "KodeBuku",
@@ -74,6 +78,7 @@ ViewData["Title"] = "Tambah Peminjaman";
                 <div class="form-group">
                   <input type="text" class="form-control" id="KodeBuku" disabled>
                 </div>
+                    <span asp-validation-for="Nip1" class="text-danger"></span>
                 <div class="form-group">
                   <label>NIP</label>
                   @Html.DropDownListFor(model => model.Nip1, new SelectList(Model.pegawaiCollection, "Nip",
