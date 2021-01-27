@@ -48,6 +48,7 @@ namespace Perpustakaan.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Buku");
             }   
+            return View("Create");
             return View("Index");
         }
 
