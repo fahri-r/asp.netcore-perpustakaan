@@ -72,6 +72,7 @@ namespace Perpustakaan.Controllers
                 return RedirectToAction("Index", "Peminjaman");
             }   
             return View("Create");
+            return View("Index");
         }
 
         public async Task<IActionResult> Delete(int? id)

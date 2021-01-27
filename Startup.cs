@@ -8,8 +8,11 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using Perpustakaan.Data;
 
-namespace asp.netcore_perpustakaan
+namespace Perpustakaan
 {
     public class Startup
     {
@@ -24,6 +27,14 @@ namespace asp.netcore_perpustakaan
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<ApplicationDbContext>(
+                dbContextOptions => dbContextOptions
+                    .UseMySql(
+                        // Replace with your connection string.
+                        Configuration.GetConnectionString("PerpustakaanDb")));
+            services.AddSession(options => {  
+                options.IdleTimeout = TimeSpan.FromMinutes(30);//You can set Time   
+    });  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +52,8 @@ namespace asp.netcore_perpustakaan
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession(); 
 
             app.UseRouting();
 

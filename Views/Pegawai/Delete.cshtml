@@ -1,0 +1,82 @@
+  @model Perpustakaan.Models.Pegawai;
+  
+  @{
+  ViewData["Title"] = "Hapus Pegawai";
+  }
+
+  @section breadcrumb{
+  <div class="row mb-2">
+      <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Hapus Data Pegawai</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Peminjaman">Home</a></li>
+              <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Pegawai">Buku</a></li>
+              <li class="breadcrumb-item active">Hapus Pegawai</li>
+          </ol>
+      </div><!-- /.col -->
+  </div><!-- /.row -->
+  }
+
+  <div class="row justify-content-center">
+      <!-- left column -->
+      <div class="col-md-8">
+          <!-- general form elements -->
+          <div class="card card-danger">
+              <div class="card-header">
+                  <h3 class="card-title">Formulir Hapus Data Pegawai</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form asp-action="Delete" asp-controller="Pegawai" method="POST">
+                  <div class="card-body">
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.Nip)
+                          <input asp-for="Nip" type="text" class="form-control" disabled>
+                      </div>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.NamaPegawai)
+                          <input asp-for="NamaPegawai" type="text" class="form-control" disabled>
+                      </div>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.Alamat)
+                          <textarea asp-for="Alamat" class="form-control" rows="3" disabled></textarea>
+                      </div>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.NoHp)
+                          <input asp-for="NoHp" type="text" class="form-control" disabled>
+                      </div>
+                  </div>
+                  <!-- /.card-body -->
+                      <div class="card-footer">
+                      <button type="submit" class="btn btn-danger" value="Delete">Hapus</button>
+                  </div>
+              </form>
+          </div>
+          <!-- /.card -->
+
+      </div>
+      <!--/.col (left) -->
+  </div>
+
+  @section footer_scripts{
+  <script src="~/plugins/moment/moment.min.js"></script>
+  <script src="~/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function () {
+          bsCustomFileInput.init();
+      });
+  </script>
+
+  <script>
+      $(function () {
+          //Datemask dd/mm/yyyy
+          $('#datemask').inputmask('yyyy', {
+              'placeholder': 'yyyy'
+          })
+          $('[data-mask]').inputmask()
+      })
+  </script>
+  }

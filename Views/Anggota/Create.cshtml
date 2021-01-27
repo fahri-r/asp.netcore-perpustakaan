@@ -1,0 +1,81 @@
+  @model Perpustakaan.ViewModels.AnggotaUsersVM;
+
+  @{
+  ViewData["Title"] = "Tambah Anggota";
+  }
+
+  @section breadcrumb{
+  <div class="row mb-2">
+      <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Tambah Data Anggota</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Peminjaman">Home</a></li>
+              <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Anggota">Anggota</a></li>
+              <li class="breadcrumb-item active">Tambah Anggota</li>
+          </ol>
+      </div><!-- /.col -->
+  </div><!-- /.row -->
+  }
+
+  <div class="row justify-content-center">
+      <!-- left column -->
+      <div class="col-md-8">
+          <!-- general form elements -->
+          <div class="card card-primary">
+              <div class="card-header">
+                  <h3 class="card-title">Formulir Tambah Data Anggota</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form asp-action="Create" asp-controller="Anggota" method="POST">
+                  <div class="card-body">
+                    <span asp-validation-for="anggotaVm.NoKtp" class="text-danger"></span>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.anggotaVm.NoKtp)
+                          <input asp-for="anggotaVm.NoKtp" type="text" class="form-control">
+                      </div>
+                    <span asp-validation-for="anggotaVm.NamaLengkap" class="text-danger"></span>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.anggotaVm.NamaLengkap)
+                          <input asp-for="anggotaVm.NamaLengkap" type="text" class="form-control">
+                      </div>
+                    <span asp-validation-for="anggotaVm.Alamat" class="text-danger"></span>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.anggotaVm.Alamat)
+                          <textarea asp-for="anggotaVm.Alamat" class="form-control" rows="3"></textarea>
+                      </div>
+                    <span asp-validation-for="anggotaVm.NoHp" class="text-danger"></span>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.anggotaVm.NoHp)
+                          <input asp-for="anggotaVm.NoHp" type="text" class="form-control">
+                      </div>
+                    <span asp-validation-for="usersVm.Email" class="text-danger"></span>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.usersVm.Email)
+                          <input asp-for="usersVm.Email" type="text" class="form-control">
+                      </div>
+                    <span asp-validation-for="usersVm.Password" class="text-danger"></span>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.usersVm.Password)
+                          <input asp-for="usersVm.Password" type="password" class="form-control">
+                      </div>
+                    <span asp-validation-for="usersVm.ConfirmPassword" class="text-danger"></span>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.usersVm.ConfirmPassword)
+                          <input asp-for="usersVm.ConfirmPassword" type="password" class="form-control">
+                      </div>
+                  </div>
+                  <!-- /.card-body -->
+
+                  <div class="card-footer">
+                      <button type="submit" class="btn btn-primary">Tambah</button>
+                  </div>
+              </form>
+          </div>
+          <!-- /.card -->
+
+      </div>
+      <!--/.col (left) -->
+  </div>

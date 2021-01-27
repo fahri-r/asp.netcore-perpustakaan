@@ -1,0 +1,87 @@
+  @model Perpustakaan.Models.Buku;
+  @{
+  ViewData["Title"] = "Edit Buku";
+  }
+
+  @section breadcrumb{
+  <div class="row mb-2">
+      <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Edit Data Buku</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Peminjaman">Home</a></li>
+              <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Buku">Buku</a></li>
+              <li class="breadcrumb-item active">Edit Buku</li>
+          </ol>
+      </div><!-- /.col -->
+  </div><!-- /.row -->
+  }
+
+  <div class="row justify-content-center">
+      <!-- left column -->
+      <div class="col-md-8">
+          <!-- general form elements -->
+          <div class="card card-warning">
+              <div class="card-header">
+                  <h3 class="card-title">Formulir Edit Data Buku</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form asp-action="Edit" asp-controller="Buku" method="POST">
+                  <div class="card-body">
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.KodeBuku)
+                          <input asp-for="KodeBuku" type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.JudulBuku)
+                          <input asp-for="JudulBuku" type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.Pengarang)
+                          <input asp-for="Pengarang" type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.Penerbit)
+                          <input asp-for="Penerbit" type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                          @Html.LabelFor(m => m.ThnTerbit)
+                          <input asp-for="ThnTerbit" type="text" class="form-control" data-inputmask-alias="datetime"
+                              data-inputmask-inputformat="yyyy" data-mask>
+                      </div>
+                  </div>
+                  <!-- /.card-body -->
+
+                  <div class="card-footer">
+                      <button type="submit" value="Edit" class="btn btn-warning">Edit</button>
+                  </div>
+              </form>
+          </div>
+          <!-- /.card -->
+
+      </div>
+      <!--/.col (left) -->
+  </div>
+
+  @section footer_scripts{
+  <script src="~/plugins/moment/moment.min.js"></script>
+  <script src="~/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function () {
+          bsCustomFileInput.init();
+      });
+  </script>
+
+  <script>
+      $(function () {
+          //Datemask dd/mm/yyyy
+          $('#datemask').inputmask('yyyy', {
+              'placeholder': 'yyyy'
+          })
+          $('[data-mask]').inputmask()
+      })
+  </script>
+  }

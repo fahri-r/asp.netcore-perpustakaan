@@ -1,0 +1,120 @@
+@model IEnumerable<Perpustakaan.Models.Pegawai>
+  @{
+  ViewData["Title"] = "Pegawai";
+  }
+
+  @section header_scripts{
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  }
+
+  @section breadcrumb{
+  <div class="row mb-2">
+    <div class="col-sm-6">
+      <h1 class="m-0 text-dark">Data Pegawai</h1>
+    </div><!-- /.col -->
+    <div class="col-sm-6">
+      <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Peminjaman">Home</a></li>
+        <li class="breadcrumb-item active">Pegawai</li>
+      </ol>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+  }
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="col-2">
+            <a class="btn btn-primary btn-block" asp-action="Create" asp-controller="Pegawai">
+              <i class="fas fa-plus">
+              </i>
+              Tambah Data
+            </a>
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="example2" class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>@Html.DisplayNameFor(model => model.Nip)</th>
+                <th>@Html.DisplayNameFor(model => model.NamaPegawai)</th>
+                <th>@Html.DisplayNameFor(model => model.Alamat)</th>
+                <th>@Html.DisplayNameFor(model => model.NoHp)</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach (var item in Model)
+              {
+              <tr>
+                <td>
+                  @Html.DisplayFor(modelItem => item.Nip)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.NamaPegawai)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.Alamat)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.NoHp)
+                </td>
+                <td class="text-center">
+                  <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Nip">
+                    <i class="fas fa-pencil-alt">
+                    </i>
+                    Edit
+                  </a>
+                  <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Nip">
+                    <i class="fas fa-trash">
+                    </i>
+                    Delete
+                  </a>
+                </td>
+              </tr>
+              }
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>@Html.DisplayNameFor(model => model.Nip)</th>
+                <th>@Html.DisplayNameFor(model => model.NamaPegawai)</th>
+                <th>@Html.DisplayNameFor(model => model.Alamat)</th>
+                <th>@Html.DisplayNameFor(model => model.NoHp)</th>
+                <th>Aksi</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+  </div>
+
+  @section footer_scripts{
+  <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+      });
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
+  }
